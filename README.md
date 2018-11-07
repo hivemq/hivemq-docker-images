@@ -30,7 +30,7 @@ The following environment variables should be used to customize the discovery an
 
 | Environment Variable | Default value | Meaning |
 | :-------- | :----- | :-------------- |
-| HIVEMQ_DNS_DISCOVERY_ADDRESS | - | Address to get the A record for that will be used for cluster discovery |
+| HIVEMQ_DNS_DISCOVERY_ADDRESS | - | Address to get the A record that will be used for cluster discovery |
 | HIVEMQ_DNS_DISCOVERY_INTERVAL | 31 | Discovery interval in seconds |
 | HIVEMQ_DNS_DISCOVERY_TIMEOUT | 30 | DNS resolution wait time in seconds |
 | HIVEMQ_CLUSTER_PORT | 8000 | Port used for cluster transport |
