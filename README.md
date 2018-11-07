@@ -30,10 +30,10 @@ The following environment variables should be used to customize the discovery an
 
 | Environment Variable | Default value | Meaning |
 | :-------- | :----- | :-------------- |
-| HIVEMQ_DNS_DISCOVERY_ADDRESS | - | Address to get the A record for to use as cluster node addresses |
-| HIVEMQ_DNS_DISCOVERY_INTERVAL | 31 | Interval in seconds after which to search for new nodes |
-| HIVEMQ_DNS_DISCOVERY_TIMEOUT | 30 | How long to wait for DNS resolution to complete |
-| HIVEMQ_CLUSTER_PORT | 8000 | Set the port to be used for the cluster transport |
+| HIVEMQ_DNS_DISCOVERY_ADDRESS | - | Address to get the A record for that will be used for cluster discovery |
+| HIVEMQ_DNS_DISCOVERY_INTERVAL | 31 | Discovery interval in seconds |
+| HIVEMQ_DNS_DISCOVERY_TIMEOUT | 30 | DNS resolution wait time in seconds |
+| HIVEMQ_CLUSTER_PORT | 8000 | Port used for cluster transport |
 | HIVEMQ_LICENSE | - | base64 encoded license file to use for the broker |
 | HIVEMQ_BIND_ADDRESS | - | Set the *cluster transport* bind address, only necessary if the default policy (resolve hostname) fails |
 | HIVEMQ_WEB_UI_USER | admin | Set the username for the Web UI login |
@@ -47,7 +47,7 @@ The image can then be built by running `docker build -t hivemq-dns .` in the `hi
 
 ## Usage
 
-Following are two examples describing how to use this image on Docker Swarm and Kubernetes respectively.
+Following are two examples, describing how to use this image on Docker Swarm and Kubernetes respectively.
 
 Other environments (provided they support DNS discovery in some way) are compatible as well.
 
