@@ -227,6 +227,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: hivemq-mqtt
+  annotations:
+    service.spec.externalTrafficPolicy: Local
 spec:
   selector:
     app: hivemq-cluster1
@@ -236,6 +238,9 @@ spec:
       targetPort: 1883
   type: LoadBalancer
 ```
+
+Note that the `externalTrafficPolicy` annotation is necessary to allow the Kubernetes service to maintain a larger amount of concurrent connections.  
+See [Source IP for Services](https://kubernetes.io/docs/tutorials/services/source-ip/#source-ip-for-services-with-type-nodeport) for more information.
 
 ## Setting the Web UI username and password
 
@@ -260,7 +265,7 @@ This behavior can be overridden by setting any value for the environment variabl
 
 # HiveMQ base image
 
-The [HiveMQ base image](hivemq3/base-image/README.md) installs and optimizes the HiveMQ installation for execution as a container.
+The [HiveMQ base image](hivemq3/base-image) installs and optimizes the HiveMQ installation for execution as a container.
 
 It is meant to be used to build custom images or to run a dockerized HiveMQ locally for testing purposes.
 
