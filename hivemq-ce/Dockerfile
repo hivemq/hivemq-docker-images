@@ -18,7 +18,7 @@ RUN set -x \
     && echo "disable-ipv6" >> "$GNUPGHOME"/dirmngr.conf \
     && gpg --no-tty --keyserver ha.pool.sks-keyservers.net --recv-keys 6380DC428747F6C393FEACA59A84159D7001A4E5 \
     && gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini \
-    && rm -r "$GNUPGHOME" /usr/local/bin/tini.asc \
+    && rm -rf "$GNUPGHOME" /usr/local/bin/tini.asc \
     && chmod +x /usr/local/bin/tini \
     && apt-get remove -y gnupg gnupg-agent dirmngr && rm -rf /var/lib/apt/lists/*
 
