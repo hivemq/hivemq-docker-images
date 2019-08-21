@@ -11,20 +11,20 @@ ENV JAVA_OPTS "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap
 ENV TINI_VERSION v0.18.0
 
 RUN set -x \
-    && apt-get update && apt-get install -y --no-install-recommends curl gpg dirmngr \
+    && apt-get update && apt-get install -y --no-install-recommends unzip curl gnupg-agent gnupg dirmngr \
     && curl -fSL "https://github.com/krallin/tini/releases/download/$TINI_VERSION/tini" -o /usr/local/bin/tini \
     && curl -fSL "https://github.com/krallin/tini/releases/download/$TINI_VERSION/tini.asc" -o /usr/local/bin/tini.asc \
     && export GNUPGHOME="$(mktemp -d)" \
     && gpg --no-tty --keyserver ha.pool.sks-keyservers.net --recv-keys 6380DC428747F6C393FEACA59A84159D7001A4E5 \
     && gpg --batch --verify /usr/local/bin/tini.asc /usr/local/bin/tini \
-    && rm -r "$GNUPGHOME" /usr/local/bin/tini.asc \
+    && rm -rf "$GNUPGHOME" /usr/local/bin/tini.asc \
     && chmod +x /usr/local/bin/tini \
     && apt-get remove -y gpg dirmngr && rm -rf /var/lib/apt/lists/*
 
 COPY config.xml /opt/config.xml
 
 # HiveMQ setup
-RUN curl -L https://www.hivemq.com/releases/hivemq-${HIVEMQ_VERSION}.zip -o /opt/hivemq-${HIVEMQ_VERSION}.zip \
+RUN curl https://hivemq.com/releases/hivemq-${HIVEMQ_VERSION}.zip -L -o /opt/hivemq-${HIVEMQ_VERSION}.zip \
     && unzip /opt/hivemq-${HIVEMQ_VERSION}.zip  -d /opt/\
     && rm -f /opt/hivemq-${HIVEMQ_VERSION}.zip \
     && ln -s /opt/hivemq-${HIVEMQ_VERSION} /opt/hivemq \
