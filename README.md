@@ -1,4 +1,6 @@
 
+NOTE: HiveMQ 4 uses a [different repository](https://github.com/hivemq/hivemq4-docker-images) for docker images. This repository is only for HiveMQ 3 docker images.
+
 # Table of Contents
    
    * [HiveMQ Docker Images](#hivemq-docker-images)
